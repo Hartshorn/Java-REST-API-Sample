@@ -35,8 +35,15 @@ from there, one can descend into /people or /family
 
 The service supports POST PUT PATCH and DELETE REST calls - which can be demonstrated by:
       
-      curl -i -X POST -H "Content-Type:application/json" -d '{  "firstName" : "Really-Cool",  "lastName" : "Person" }' http://localhost:8080/people
+    curl -i -X POST -H "Content-Type:application/json" -d '{  "firstName" : "Really-Cool",  "lastName" : "Person" }' http://localhost:8080/people
       
 or to PATCH an existing record (assuming the generated id was 1):
 
-      curl -i -X PATCH -H "Content-Type:application/json" -d '{ "lastName" : "Cool-Dude" }' http://localhost:8080/people/1
+    curl -i -X PATCH -H "Content-Type:application/json" -d '{ "lastName" : "Cool-Dude" }' http://localhost:8080/people/1
+      
+The service also supports searching, with:
+
+    curl http://localhost:8080/people/search/findByLastName?name=Cool-Dude
+
+All of this demonstrates what a powerful tool the Spring Framework is.  In a very minimal amount of code, we have not
+only generated a full REST API, but have the ability to easily extend it to our needs.
